@@ -1,0 +1,38 @@
+1.字符集与校对规则：
+	//查看mysql字符集设置
+	SHOW VARIABLES LIKE '%character%';
+	
+	//查看可选字符集
+	SHOW CHARACTER SET;
+	
+	//查看可选校对规则
+	SHOW COLLATION;
+	
+	//设置当前连接的character_set_connect、character_set_client、character_set_results的字符集
+	SET NAMES 'utf8';
+	
+	//相当于以下三条命令：
+	SET character_set_client = utf8;     
+	
+	SET character_set_results = utf8;    
+	
+	SET character_set_connection = utf8; 
+	
+	//转换已有表的字符集与校对规则
+	ALTER TABLE t_user CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+2.日志记录：
+    //查看是否打开日志记录功能
+    SHOW VARIABLES LIKE "general_log%";
+    
+    //设置当前连接打开日志记录
+    SET GLOBAL general_log = 'ON';
+    
+    //修改mysql配置文件my.ini，设置时区，打开日志记录，设置字符集
+    [mysqld]
+    default-time-zone='+0:00' 
+    character_set_server=latin1
+    
+    general_log=1
+    general_log_file=D:\Code Environment\mysql-5.6.10-winx64\mysql-5.6.10-winx64\data\Qin.log
+    
